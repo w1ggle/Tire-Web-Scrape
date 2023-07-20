@@ -33,12 +33,20 @@ bjSoup = BeautifulSoup(page_to_scrape.text, 'html.parser')
 
 
 #tabulating
+
+#TODO add counter and if statement. When using selenium driver and going to next page, add one to counter. If counter > 1, file = open(file, a). I think you can append to csv table
 print("Tabulating data") 
 #file = open('output.csv', 'w')
 #writer = csv.writer(file)
 #writer.writerow(['Brand', 'Model', 'CPU', 'CPU Score', 'RAM (GB)', 'RAM Type', 'Storage (GB)', 'GPU', 'Size (In)', 'Color', 'Price ($)', 'Refurbed' , 'Open Box', 'Link' ]) #create CSV file
 
-products = bjSoup.findAll('div', attrs={"class":"result_right"}) #extracting data from each product
 
-#file.close() 
+
+tires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product
+
+for tire in tires:
+    price = tire.find('span', attrs={"class":"quotePrice"}).text
+    
+    print(price)
+ 
 print("DONE! Check output.csv")
