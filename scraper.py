@@ -48,7 +48,12 @@ for tire in tires:
     brand = tire.find('div', attrs={'class':'tireBrand'}).text
     model = tire.find('div', attrs={'class':'tireTitle'}).text
     price = tire.find('span', attrs={"class":"quotePrice"}).text
+    warranty = tire.find('p', attrs={"class":"tire-warranty"}).text
     print(model)
+    
+    #if BOGO
+    #individualPrice = tire.find('h3', attrs={'class':'tirePrice noStrike'}).text
+    #price = price - individualPrice
 
- 
+
 print("DONE! Check output.csv")
