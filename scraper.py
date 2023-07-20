@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 import csv
 import re
+
 #get packages
 print("Installing packages")  #TODO make setup an if statement
 #setup.install()
@@ -27,6 +28,7 @@ bjsURL = "https://tires.bjs.com/tires/search/?width=205&aspect=55&rim=16&sort=pr
 page_to_scrape = requests.get(bjsURL,headers=headers)
 bjSoup = BeautifulSoup(page_to_scrape.text, 'html.parser')
 
+
 #file = open('html.html','w')
 #file.write(str(bjSoup.prettify))
 #file.close()
@@ -42,16 +44,22 @@ print("Tabulating data")
 
 
 
-tires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product
+tires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product #TODO can get more speed if go further into tree first
 
 for tire in tires:
     brand = tire.find('div', attrs={'class':'tireBrand'}).text
+    
+    
+    #TODO all found under tire-pricing div class:"tire-pricing"
     model = tire.find('div', attrs={'class':'tireTitle'}).text
     
-    #all found under 
+    
+    
+    #TODO all found under div class="quote-calculator": price per tire, speed, warranty, total price
+    
     price = tire.find('span', attrs={"class":"quotePrice"}).text
     warranty = tire.find('p', attrs={"class":"tire-warranty"}).text
-    #speed = 
+    #speed = #found under size
     #print(model)
     installFee = 80
     savings = tire.find('div', attrs={"class":"tireOffer"})
