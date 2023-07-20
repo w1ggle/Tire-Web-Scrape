@@ -21,7 +21,8 @@ headers = {
 #page_to_scrape = requests.get(samsURL,headers=headers) 
 #samSoup = BeautifulSoup(page_to_scrape.text, 'html.parser') 
 
-bjsURL = "https://tires.bjs.com/tires/search/?width=205&aspect=55&rim=16&sort=price-asc&types=6&qty-filter=4"
+bjsURL = "https://tires.bjs.com/selectstore/?width=205&aspect=55&rim=16&action=update&entity=4073"
+
 page_to_scrape = requests.get(bjsURL,headers=headers)
 bjSoup = BeautifulSoup(page_to_scrape.text, 'html.parser')
 
