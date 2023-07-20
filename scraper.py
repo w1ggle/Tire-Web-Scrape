@@ -61,10 +61,12 @@ for tire in tires:
     warranty = tire.find('p', attrs={"class":"tire-warranty"}).text
     #speed = #found under size
     #print(model)
-    installFee = 80
+    installFee = 80 #$20/tire at BJs
     savings = tire.find('div', attrs={"class":"tireOffer"})
-    #index = savings.find("$")
-    #savings = savings[index:]
+    if savings != None:
+        index = savings.text.find("$")
+        savings = savings.text[index:]
+    
     
     print(savings)
     #if BOGO
