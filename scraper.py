@@ -17,9 +17,9 @@ headers = {
 }
 
 #MIGHT NEED TO SCRAP SINCE SAMS CLUB NO LONGER ALLOWS BOTS TO USE /S/ PAGES
-samsURL = "https://www.samsclub.com/s/2055516?rootDimension=Tire%20Diameter%3A16%3A16%20in.pipsymbTire%20Aspect%20Ratio%3A55pipsymbTire%20Width%3A205%3A205%20in.%3A205%20mmpipsymbTire%20Season%3AAll%20Season&searchCategoryId=1056&sortKey=p_retail_sort&sortOrder=0&tireSearchTerm=205%2F55R16"
-page_to_scrape = requests.get(samsURL,headers=headers) 
-samSoup = BeautifulSoup(page_to_scrape.text, 'html.parser') 
+#samsURL = "https://www.samsclub.com/s/2055516?rootDimension=Tire%20Diameter%3A16%3A16%20in.pipsymbTire%20Aspect%20Ratio%3A55pipsymbTire%20Width%3A205%3A205%20in.%3A205%20mmpipsymbTire%20Season%3AAll%20Season&searchCategoryId=1056&sortKey=p_retail_sort&sortOrder=0&tireSearchTerm=205%2F55R16"
+#page_to_scrape = requests.get(samsURL,headers=headers) 
+#samSoup = BeautifulSoup(page_to_scrape.text, 'html.parser') 
 
 bjsURL = "https://tires.bjs.com/tires/search/?width=205&aspect=55&rim=16&sort=price-asc&types=6&qty-filter=4"
 page_to_scrape = requests.get(bjsURL,headers=headers)
