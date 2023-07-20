@@ -45,7 +45,9 @@ print("Tabulating data")
 tires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product
 
 for tire in tires:
+    brand = tire.find('div', attrs={'class':'tireBrand'}).text
     price = tire.find('span', attrs={"class":"quotePrice"}).text
+    print(brand)
 
  
 print("DONE! Check output.csv")
