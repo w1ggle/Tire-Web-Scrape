@@ -10,6 +10,7 @@ import re
 #get packages
 print("Installing packages")  #TODO make setup an if statement
 #setup.install()
+
 #get html from website
 print("Scraping URLs")  #TODO add if statement to check if we got a request, else print error
 headers = {
@@ -23,12 +24,13 @@ headers = {
 #samSoup = BeautifulSoup(page_to_scrape.text, 'html.parser') 
 
 bjsURL = "https://tires.bjs.com/tires/search/?width=205&aspect=55&rim=16&sort=price-asc&types=6&qty-filter=4&action=update&entity=4073"
-
-
 page_to_scrape = requests.get(bjsURL,headers=headers)
-bjSoup = BeautifulSoup(page_to_scrape.text, 'html.parser')
+#bjSoup = BeautifulSoup(page_to_scrape.text, 'html.parser')
+#bjSoup = BeautifulSoup('fullHTML.html', 'html.parser')
 
-
+file = open("fullHTML.html","r")
+contents = file.read()
+bjSoup = BeautifulSoup(contents, 'html.parser')
 #file = open('html.html','w')
 #file.write(str(bjSoup.prettify))
 #file.close()
@@ -44,9 +46,9 @@ print("Tabulating data")
 
 
 
-tires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product #TODO can get more speed if go further into tree first
+allTires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product #TODO can get more speed if go further into tree first
 
-for tire in tires:
+for tire in allTires:
     brand = tire.find('div', attrs={'class':'tireBrand'}).text
     
     
