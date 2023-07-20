@@ -46,7 +46,6 @@ tires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data fro
 
 for tire in tires:
     price = tire.find('span', attrs={"class":"quotePrice"}).text
-    
-    print(price)
+
  
 print("DONE! Check output.csv")
