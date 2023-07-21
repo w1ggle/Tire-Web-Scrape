@@ -76,7 +76,7 @@ for tire in allTires:
             savings = individualPrice
         
         print(price)    
-        price = float(price) - float(savings)
+        price = float(price) - float(savings) + installFee
 
     rating = None
     writer.writerow([brand, model, speed, price, rating]) 
