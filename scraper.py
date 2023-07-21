@@ -60,11 +60,15 @@ for tire in allTires:
     
     #TODO all found under div class="quote-calculator": price per tire, speed, warranty, total price
     
-    price = tire.find('span', attrs={"class":"quotePrice"}).text[1:]
+    
     warranty = tire.find('p', attrs={"class":"tire-warranty"}).text
     speed = None #found under size
     #print(model)
-    installFee = 80 #$20/tire at BJs
+    price = tire.find('span', attrs={"class":"quotePrice"}).text[1:]
+    installFee = 80.00 #$20/tire at BJs
+    
+    price = float(price) + installFee
+    print(type(installFee))
     savings = tire.find('div', attrs={"class":"tireOffer"})
     if savings != None:
         index = savings.text.find("$")
@@ -76,8 +80,9 @@ for tire in allTires:
             savings = individualPrice
         
         print(price)    
-        price = float(price) - float(savings) + installFee
+        price = price - float(savings)
 
+        
     rating = None
     writer.writerow([brand, model, speed, price, rating]) 
 
