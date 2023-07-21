@@ -52,18 +52,19 @@ allTires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data 
 for tire in allTires:
     brand = tire.find('div', attrs={'class':'tireBrand'}).text
     
-
     parent = tire.find('div', attrs={'class':'tire-pricing'})
- 
+    
     model = parent.find('div', attrs={'class':'tireTitle'}).text
-    print(model)
-    
-    
-    
+
     #TODO all found under div class="quote-calculator": price per tire, speed, warranty, total price
     
+    parent = parent.find('div', attrs={'class':'quote-calculator'})
     
-    warranty = tire.find('p', attrs={"class":"tire-warranty"}).text
+    warranty = None
+    index = tire.find('p', attrs={"class":"tire-warranty"}).text.find(':')
+    if index != -1: 
+        warranty = tire.find('p', attrs={"class":"tire-warranty"}).text[index+1:-6]
+ 
     speed = None #found under size
     #print(model)
     price = tire.find('span', attrs={"class":"quotePrice"}).text[1:]
@@ -78,7 +79,7 @@ for tire in allTires:
         if index != -1: #flat rate
             savings = savings.text[index + 1:]
         else: #BOGO
-            individualPrice = tire.find('h3', attrs={'class':'tirePrice noStrike'}).text
+            individualPrice = tire.find('h3', attrs={'class':'tirePrice noStrike'}).text[1:] #check
             savings = individualPrice
         
         #print(price)    
