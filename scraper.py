@@ -47,19 +47,16 @@ file = open('output.csv', 'w')
 writer = csv.writer(file)
 writer.writerow(['Brand', 'Model', 'Speed', 'Price', 'Rating']) #create CSV file
 
-
-allTires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product #TODO can get more speed if go further into tree first
+allTires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product
 for tire in allTires:
     brand = tire.find('div', attrs={'class':'tireBrand'}).text
     
     parent = tire.find('div', attrs={'class':'tire-pricing'})
-    
     model = parent.find('div', attrs={'class':'tireTitle'}).text
 
     #TODO all found under div class="quote-calculator": price per tire, speed, warranty, total price
     
-    parent = parent.find('div', attrs={'class':'quote-calculator'})
-    
+    parent = parent.find('div', attrs={'class':'quote-calculator'})  
     warranty = None
     index = tire.find('p', attrs={"class":"tire-warranty"}).text.find(':')
     if index != -1: 
