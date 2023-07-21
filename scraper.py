@@ -1,5 +1,5 @@
 # https://www.samsclub.com/robots.txt states that this should be fine to scrape their website. If a rep from Sam's Club wants me to remove it, feel free to contact me and I will remove this
-# https://www.bjs.com/robots.txt states that this should be fine to scrape their website. If a rep from BJs wants me to remove it, feel free to contact me and I will remove this
+# https://tires.bjs.com/robots.txt states that this should be fine to scrape their website. If a rep from BJs wants me to remove it, feel free to contact me and I will remove this
 
 import setup
 from bs4 import BeautifulSoup
@@ -43,10 +43,9 @@ else:
 #tabulating
 #TODO add counter and if statement. When using selenium driver and going to next page, add one to counter. If counter > 1, file = open(file, a). I think you can append to csv table
 print("Tabulating data") 
-#file = open('output.csv', 'w')
-#writer = csv.writer(file)
-#writer.writerow(['Brand', 'Model', 'CPU', 'CPU Score', 'RAM (GB)', 'RAM Type', 'Storage (GB)', 'GPU', 'Size (In)', 'Color', 'Price ($)', 'Refurbed' , 'Open Box', 'Link' ]) #create CSV file
-
+file = open('output.csv', 'w')
+writer = csv.writer(file)
+writer.writerow(['Brand', 'Model', 'Speed', 'Price', 'Rating']) #create CSV file
 
 
 allTires = bjSoup.findAll('div', attrs={"class":"module-849"}) #extracting data from each product #TODO can get more speed if go further into tree first
